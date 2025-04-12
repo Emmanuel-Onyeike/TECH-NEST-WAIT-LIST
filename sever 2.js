@@ -1,60 +1,36 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const nodemailer = require('nodemailer');
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-const app = express();
-const PORT = 3000;
+  emailjs.init("0GB1YfKXLcprzMNlh"); // Replace with your actual Public Key
 
-app.use(cors());
-app.use(bodyParser.json());
-
-let waitlist = [];
-
-// Nodemailer setup
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'emmanuelonyeike33@gmail.com',
-    pass: 'fpyf kjnd zdmb txyh' // Use App Password, not regular one
-  }
-});
-
-app.post('/join', (req, res) => {
-  const { email } = req.body;
-
-  if (!email) {
-    return res.status(400).json({ error: 'Email is required' });
-  }
-
-  const waitlistNumber = waitlist.length + 1;
-  waitlist.push({ email, waitlistNumber });
-
-  // Send confirmation email
-  const mailOptions = {
-    from: 'Tech-Nest <your_email@gmail.com>',
-    to: email,
-    subject: 'Welcome to Tech-Nest 🚀',
-    html: `<h3>Welcome to Tech-Nest!</h3>
-           <p>Your waitlist number is <strong>#${waitlistNumber}</strong>.</p>
-           <p>We’ll keep you updated. Thanks for joining!</p>`
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-      return res.status(500).json({ error: 'Failed to send email' });
-    }
-
-    res.status(200).json({ message: 'Joined successfully!', waitlistNumber });
+  document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+  
+    const email = document.getElementById('email').value;
+    const waitlistNumber = getNextWaitlistNumber(); // You create this logic
+  
+    const templateParams = {
+      user_email: email,
+      waitlist_number: waitlistNumber
+    };
+  
+    emailjs.send('service_8to2h6g', 'template_nadde43', templateParams)
+      .then(function(response) {
+        document.getElementById('success-message').classList.remove('d-none');
+        document.getElementById('email').value = '';
+        console.log('SUCCESS!', response.status, response.text);
+      }, function(error) {
+        alert('Failed to send email');
+        console.log('FAILED...', error);
+      });
   });
-});
-
-// Route to get waitlist for admin
-app.get('/api/waitlist', (req, res) => {
-  res.json(waitlist);
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+  function getNextWaitlistNumber() {
+    let users = JSON.parse(localStorage.getItem('waitlist')) || [];
+    const newEntry = {
+      email: document.getElementById('email').value,
+      waitlistNumber: users.length + 1
+    };
+    users.push(newEntry);
+    localStorage.setItem('waitlist', JSON.stringify(users));
+    return newEntry.waitlistNumber;
+  }
+  
