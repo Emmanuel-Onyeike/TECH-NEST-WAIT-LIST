@@ -1,4 +1,4 @@
-fetch('http://localhost:5000/api/waitlist')
+fetch('/api/waitlist')
     .then(res => res.json())
     .then(data => {
         const table = document.getElementById('waitlist-table');
