@@ -1,227 +1,226 @@
 body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(to bottom right, rgb(0, 0, 0), #535bef);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-  }
-  
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(to bottom right, rgb(0, 0, 0), #535bef);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
 
+
+.header-container {
+  padding: 20px 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  max-width: 900px;
+  margin-top: 30px;
+  border: 3px solid #ffffff;  
+}
+
+
+.logo-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+}
+
+
+.header-text h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.header-text .tagline {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-top: 5px;
+}
+
+@media (max-width: 576px) {
   .header-container {
-    padding: 20px 30px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    max-width: 900px;
-    margin-top: 30px;
-    border: 3px solid #ffffff;  
+    padding: 15px 20px;
   }
-  
 
   .logo-img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #ffffff;
+    width: 60px;
+    height: 60px;
   }
-  
 
   .header-text h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #ffffff;
-  }
-  
-  .header-text .tagline {
-    font-size: 1rem;
-    color: #e0e0e0;
-    margin-top: 5px;
-  }
- 
-  @media (max-width: 576px) {
-    .header-container {
-      padding: 15px 20px;
-    }
-  
-    .logo-img {
-      width: 60px;
-      height: 60px;
-    }
-  
-    .header-text h2 {
-      font-size: 1.4rem;
-    }
-  
-    .header-text .tagline {
-      font-size: 0.9rem;
-    }
+    font-size: 1.4rem;
   }
 
-.waitlist-container {
-    max-width: 500px;
-    margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    margin-top: 80px;
-    border-radius: 20px;
-    border: 3px solid white;
-  }
-  
-  .waitlist-container .card {
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    background-color: transparent;
-    color: white;
-  }
-  
-  .waitlist-container .card:hover {
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
-    color: white;
-  }
-  
-  .waitlist-container h4 {
-    font-weight: 800;
-    color: white;
-  }
-  
-  .waitlist-container .form-label {
-    font-weight: 500;
-    color: white;
-  }
-  
-  .waitlist-container .form-control {
-    border-radius: 12px;
-    padding: 10px 14px;
-    border: 1px solid #ced4da;
-    transition: border-color 0.3s ease;
-    color: white;
-    background-color: transparent;
-  }
-  
-  .waitlist-container .form-control:focus {
-    border-color: white;
-    background-color: transparent;
-    color: white;
-    box-shadow: none;
-  }
-  
-  .waitlist-container .btn-primary {
-    background: linear-gradient(to bottom right, rgb(0, 0, 0), #535bef);
-    border-radius: 12px;
-    padding: 10px;
-    font-weight: 500;
-    border: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .waitlist-container .btn-primary:hover {
-    background-color: #0b5ed7;
-    transform: translateY(2px);
-    box-shadow: 0 4px 0 white;
-  }
-  
-  #success-message {
-    border-radius: 10px;
-    font-size: 0.95rem;
-    text-align: center;
-  }
-  
- 
-  @media (max-width: 576px) {
-    .waitlist-container {
-      padding: 0 1rem;
-    }
-  
-    .waitlist-container .card {
-      padding: 1.5rem 1rem;
-    }
-  
-    .waitlist-container h4 {
-      font-size: 1.2rem;
-    }
-  }
-  body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .main-wrapper {
-    background-image: url('https://image.shutterstock.com/image-vector/cartoon-rocket-space-ship-take-260nw-540835846.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    min-height: 100vh;
-    padding-bottom: 50px;
-    position: relative;
-    z-index: 0;
-  }
-  
- 
-  .main-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); 
-    z-index: 1;
-  }
-  
- 
-  .main-wrapper > * {
-    position: relative;
-    z-index: 2;
-  }
- 
-  .label-box {
-    background-color: transparent;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-weight: 900;
-    transition: all 0.3s ease-in-out;
-     margin-top: 50px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    user-select: none;
-  }
-  
-  .label-box:hover {
-    transform: translateY(-5px) scale(1.03) rotateX(5deg);
-    background: linear-gradient(145deg, #e2e2e2, #ffffff);
-    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.15);
-    color: black;
-  }
-  
-  .footer {
-    background-color: transparent;
-    color: #fff;
-    padding: 30px 15px;
-    text-align: center;
-    height: 160px;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .footer p {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
-  }
-  
-  .footer-text {
+  .header-text .tagline {
     font-size: 0.9rem;
-    color: #dcdcdc;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.5;
   }
-  
-  
+}
+
+.waitlist-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-top: 80px;
+  border-radius: 20px;
+  border: 3px solid white;
+}
+
+.waitlist-container .card {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: white;
+}
+
+.waitlist-container .card:hover {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  color: white;
+}
+
+.waitlist-container h4 {
+  font-weight: 800;
+  color: white;
+}
+
+.waitlist-container .form-label {
+  font-weight: 500;
+  color: white;
+}
+
+.waitlist-container .form-control {
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease;
+  color: white;
+  background-color: transparent;
+}
+
+.waitlist-container .form-control:focus {
+  border-color: white;
+  background-color: transparent;
+  color: white;
+  box-shadow: none;
+}
+
+.waitlist-container .btn-primary {
+  background: linear-gradient(to bottom right, rgb(0, 0, 0), #535bef);
+  border-radius: 12px;
+  padding: 10px;
+  font-weight: 500;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.waitlist-container .btn-primary:hover {
+  background-color: #0b5ed7;
+  transform: translateY(2px);
+  box-shadow: 0 4px 0 white;
+}
+
+#success-message {
+  border-radius: 10px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+
+@media (max-width: 576px) {
+  .waitlist-container {
+    padding: 0 1rem;
+  }
+
+  .waitlist-container .card {
+    padding: 1.5rem 1rem;
+  }
+
+  .waitlist-container h4 {
+    font-size: 1.2rem;
+  }
+}
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main-wrapper {
+  background-image: url('https://image.shutterstock.com/image-vector/cartoon-rocket-space-ship-take-260nw-540835846.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding-bottom: 50px;
+  position: relative;
+  z-index: 0;
+}
+
+
+.main-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); 
+  z-index: 1;
+}
+
+
+.main-wrapper > * {
+  position: relative;
+  z-index: 2;
+}
+
+.label-box {
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-weight: 900;
+  transition: all 0.3s ease-in-out;
+   margin-top: 50px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.label-box:hover {
+  transform: translateY(-5px) scale(1.03) rotateX(5deg);
+  background: linear-gradient(145deg, #e2e2e2, #ffffff);
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.15);
+  color: black;
+}
+
+.footer {
+  background-color: transparent;
+  color: #fff;
+  padding: 30px 15px;
+  text-align: center;
+  height: 160px;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer p {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: #dcdcdc;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
