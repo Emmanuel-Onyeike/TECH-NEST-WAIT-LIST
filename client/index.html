@@ -1,1 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech-Nxt Waitlist</title>
+  <link rel="icon" href="logo.jpeg" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+      html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+    }
+   body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom right, #0d47a1, #1976d2);
+      z-index: -2;
+    }
+    .logo-img {
+      height: 60px;
+      width: auto;
+    }
+
+    .header-container {
+      padding: 1rem;
+    }
+
+    .header-text h2 {
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+      color: #cfd8dc;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      color: #0d47a1;
+    }
+
+    .btn-primary {
+      background-color: #0d47a1;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #1565c0;
+    }
+
+    .label-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-weight: 500;
+      color: #ffffff;
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer {
+      background-color: #0d47a1;
+      color: #ffffff;
+    }
+
+    .about-btn {
+      margin-top: 1rem;
+      background-color: #ffffff;
+      color: #0d47a1;
+      font-weight: 600;
+      border-radius: 5px;
+    }
+
+    .about-btn:hover {
+      background-color: #e3f2fd;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <canvas id="stars"></canvas>
+   
+  <div class="container d-flex justify-content-center mt-4">
+    <div class="header-container d-flex flex-row align-items-center justify-content-between w-100">
+      <div class="logo-wrapper">
+        <img src="logo.jpeg" alt="Logo" class="logo-img">
+      </div>
+      <div class="header-text text-end">
+        <h2 class="mb-0">TECH-NXT</h2>
+        <p class="tagline">Wait-List</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5 waitlist-container">
+    <div class="card p-4 shadow-sm">
+      <h4 class="mb-3 text-center"><i class="fas fa-envelope-open-text me-2"></i>Join the Waitlist</h4>
+      <h6 class="mb-3 text-center">Be the First to know when we Launch 🚀</h6>
+
+      <form id="waitlist-form">
+        <div class="mb-3">
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100"><i class="fas fa-paper-plane me-2"></i>Join Now</button>
+      </form>
+      <div id="success-message" class="alert alert-success mt-3 d-none" role="alert">
+        <i class="fas fa-check-circle me-2"></i>You've been added to the waitlist!
+      </div>
+      <div class="text-center">
+        <button class="btn about-btn mt-3" data-bs-toggle="modal" data-bs-target="#aboutModal">
+          <i class="fas fa-info-circle me-2"></i>About
+        </button>
+      </div>
+      
+      
+    </div>
+  </div>
+  <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white" style="border-radius: 15px; border: 2px solid #535bef; box-shadow: 0 8px 40px rgba(83, 91, 239, 0.6);">
+        <div class="modal-header" style="background: rgba(83, 91, 239, 0.3); border-top-left-radius: 15px; border-top-right-radius: 15px;">
+          <h5 class="modal-title fw-bold" id="aboutModalLabel">
+            <i class="fas fa-info-circle me-2 text-warning"></i>About Tech-Nest
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex justify-content-around flex-wrap gap-4">
+
+            <div class="team-member text-center clickable-circle" data-bs-toggle="modal" data-bs-target="#profileEmmanuel">
+              <div class="circle-image" style="background-image: url('ceo.jpeg');"></div>
+              <div class="mt-2">
+                <i class="fas fa-user-tie text-warning fs-4"></i>
+                <h6 class="mt-1 mb-0 fw-bold">EMMANUEL ONYEIKE</h6>
+                <small class="text-white">CEO</small>
+              </div>
+            </div>
+          
+            <div class="team-member text-center clickable-circle" data-bs-toggle="modal" data-bs-target="#profileVictor">
+              <div class="circle-image" style="background-image: url('coo.jpeg');"></div>
+              <div class="mt-2">
+                <i class="fas fa-user-cog text-warning fs-4"></i>
+                <h6 class="mt-1 mb-0 fw-bold">VICTOR CHUKWUEMEKA</h6>
+                <small class="text-white">COO</small>
+              </div>
+            </div>
+          
+            <div class="team-member text-center clickable-circle" data-bs-toggle="modal" data-bs-target="#profileAfeez">
+              <div class="circle-image" style="background-image: url('cto.jpeg');"></div>
+              <div class="mt-2">
+                <i class="fas fa-user-shield text-warning fs-4"></i>
+                <h6 class="mt-1 mb-0 fw-bold">AFEEZ TIMOTOPE</h6>
+                <small class="text-white">CTO</small>
+              </div>
+            </div>
+          
+          </div>
+          
+        <div class="modal-footer" style="border-top: none;">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Emmanuel Modal -->
+<div class="modal fade" id="profileEmmanuel" tabindex="-1" aria-labelledby="profileEmmanuelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white" style="border-radius: 15px; border: 2px solid #535bef;">
+        <div class="modal-header" style="background: rgba(83, 91, 239, 0.3); border-top-left-radius: 15px; border-top-right-radius: 15px;">
+          <h5 class="modal-title" id="profileEmmanuelLabel">
+            <i class="fas fa-user-tie me-2 text-warning"></i>
+            <span class="text-success">EMMANUEL ONYEIKE</span> - <span class="text-danger">CEO</span>
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <i class="fas fa-map-marker-alt text-warning me-2"></i>
+            Based in <strong class="text-success">Port Harcourt</strong> and a proud student of <strong class="text-danger">Godfrey Okoye University</strong>, a private university in <strong class="text-success">Enugu State</strong>, 
+            <strong class="text-warning">Emmanuel Onyeike</strong> is a visionary <strong class="text-danger">Nigerian entrepreneur</strong> passionate about <strong class="text-success">innovation</strong> in the tech space.
+          </p>
+          <p>
+            <i class="fas fa-rocket text-success me-2"></i>
+            He began his tech journey in <strong class="text-info">2019</strong> after a brief but inspiring stint at 
+            <strong class="text-danger">PXXL Space</strong>, a hosting company led by <strong class="text-warning">Honour Robinson Amadi</strong>.
+            This experience sparked the birth of <strong class="text-success">Prime Aztecs</strong>, launched in <strong class="text-danger">January 2022</strong>.
+          </p>
+          <p>
+            <i class="fas fa-user-cog text-danger me-2"></i>
+            Emmanuel led <strong class="text-success">Prime Aztecs</strong> as <strong class="text-warning">CEO</strong> until <strong class="text-danger">March 2024</strong>,
+            when he went on a <strong class="text-info">tech excursion</strong> to gain deeper knowledge.
+          </p>
+          <p>
+            <i class="fas fa-users text-success me-2"></i>
+            Upon his return, he co-founded <strong class="text-warning">Tech-Nest</strong> with his team:
+            <strong class="text-success">Victor Chukwuemeka</strong> (<strong class="text-info">COO</strong>) and 
+            <strong class="text-success">Afeez Timotope</strong> (<strong class="text-info">CTO</strong>).
+            The trio transitioned the brand into <strong class="text-danger">TECH-NXT</strong>, officially launched on 
+            <strong class="text-warning">May 15th, 2025</strong>.
+          </p>
+          <p>
+            <i class="fas fa-lightbulb text-warning me-2"></i>
+            <strong class="text-danger">TECH-NXT</strong> is now a thriving innovation hub focused on uniting the tech community, fostering opportunities,
+            and nurturing the next generation of developers.
+          </p>
+          <p>
+            <i class="fas fa-laptop-code text-info me-2"></i>
+            The team is currently preparing for the launch of <strong class="text-success">T Learning Pro</strong>,
+            a powerful learning platform that teaches <strong class="text-warning">multiple programming languages</strong> 
+            and provides access to other transformative tech features.
+          </p>
+        </div>
+        <div class="modal-footer" style="border-top: none;">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+<!-- Victor Modal -->
+<div class="modal fade" id="profileVictor" tabindex="-1" aria-labelledby="profileVictorLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white" style="border-radius: 15px; border: 2px solid #535bef;">
+        <div class="modal-header" style="background: rgba(83, 91, 239, 0.3); border-top-left-radius: 15px; border-top-right-radius: 15px;">
+          <h5 class="modal-title" id="profileVictorLabel">
+            <i class="fas fa-user-cog me-2 text-warning"></i>
+            <span class="text-success">VICTOR CHUKWUEMEKA</span> - <span class="text-danger">COO</span>
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <i class="fas fa-university text-info me-2"></i>
+            <strong class="text-success">Victor Chukwuemeka</strong> is a driven <strong class="text-danger">Nigerian tech entrepreneur</strong> and a proud student of 
+            <strong class="text-warning">Godfrey Okoye University</strong>, the same respected private institution attended by 
+            <strong class="text-success">Emmanuel Onyeike</strong>.
+          </p>
+          <p>
+            <i class="fas fa-code text-warning me-2"></i>
+            He started his tech journey in <strong class="text-info">September 2023</strong>, demonstrating a deep passion for 
+            <strong class="text-success">software, innovation</strong>, and meaningful digital solutions.
+          </p>
+          <p>
+            <i class="fas fa-handshake text-success me-2"></i>
+            In recognition of his strong leadership and collaborative mindset, he was invited to become 
+            <strong class="text-warning">COO</strong> of <strong class="text-danger">TECH-NXT</strong> under the visionary leadership of 
+            <strong class="text-success">Emmanuel Onyeike (CEO)</strong> and alongside <strong class="text-info">Afeez Timotope (CTO)</strong>.
+          </p>
+          <p>
+            <i class="fas fa-cogs text-danger me-2"></i>
+            Victor plays a crucial role in managing day-to-day operations, building internal processes, and ensuring the steady growth and alignment 
+            of the TECH-NXT team with its mission.
+          </p>
+          <p>
+            <i class="fas fa-rocket text-info me-2"></i>
+            With a clear vision and fierce determination, <strong class="text-success">Victor Chukwuemeka</strong> continues to empower 
+            <strong class="text-warning">TECH-NXT</strong> to shape the future of tech in Nigeria and beyond.
+          </p>
+        </div>
+        <div class="modal-footer" style="border-top: none;">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- Afeez Modal -->
+<div class="modal fade" id="profileAfeez" tabindex="-1" aria-labelledby="profileAfeezLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white" style="border-radius: 15px; border: 2px solid #535bef;">
+        <div class="modal-header" style="background: rgba(83, 91, 239, 0.3); border-top-left-radius: 15px; border-top-right-radius: 15px;">
+          <h5 class="modal-title" id="profileAfeezLabel">
+            <i class="fas fa-user-shield me-2 text-warning"></i>
+            <span class="text-success">AFEEZ TIMOTOPE</span> - <span class="text-danger">CTO</span>
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <i class="fas fa-laptop-code text-info me-2"></i>
+            <strong class="text-success">Afeez Timotope</strong> is a highly skilled and intuitive 
+            <strong class="text-warning">technical strategist</strong> currently based in 
+            <strong class="text-info">Lagos, Nigeria</strong>. Though details about his alma mater remain private, he is a proud 
+            <strong class="text-success">graduate</strong> and a proven talent in the Nigerian tech ecosystem.
+          </p>
+          <p>
+            <i class="fas fa-code-branch text-warning me-2"></i>
+            Afeez was originally invited to serve as <strong class="text-danger">Chief Technology Officer (CTO)</strong> at 
+            <strong class="text-success">Prime Aztecs</strong>, working closely with 
+            <strong class="text-info">Emmanuel Onyeike</strong>. After Emmanuel left to expand his vision, Afeez followed as a trusted partner to co-establish 
+            <strong class="text-warning">Tech-Nest</strong>, the stepping stone that would soon evolve into the groundbreaking 
+            <strong class="text-danger">TECH-NXT</strong>.
+          </p>
+          <p>
+            <i class="fas fa-server text-success me-2"></i>
+            Afeez currently leads all technical operations and platform architecture for 
+            <strong class="text-warning">TECH-NXT</strong>. From backend systems to infrastructure strategy, he plays a pivotal role in ensuring 
+            the company's stability, security, and performance.
+          </p>
+          <p>
+            <i class="fas fa-gem text-info me-2"></i>
+            Recognized as a true <strong class="text-success">diamond</strong> in the company, 
+            <strong class="text-success">Afeez Timotope</strong> continues to build the very engine behind TECH-NXT's innovation.
+          </p>
+        </div>
+        <div class="modal-footer" style="border-top: none;">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+<!-- Labels Container -->
+<div class="labels-container d-flex flex-wrap justify-content-center gap-3 mt-4">
+    <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalInnovative"><i class="fas fa-lightbulb"></i> Innovative Community</div>
+    <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalAccess"><i class="fas fa-bolt"></i> Early Access</div>
+    <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalClass"><i class="fas fa-chalkboard-teacher"></i> Tech Class</div>
+    <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalAwards"><i class="fas fa-award"></i> Exclusive Awards</div>
+    <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalTours"><i class="fas fa-map-marked-alt"></i> Tours</div>
+    <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalMentorship"><i class="fas fa-user-graduate"></i> Mentorship</div>
+    <div class="label-box" data-bs-toggle="modal" data-bs-target="#modalBeta"><i class="fas fa-vial"></i> Beta Features</div>
+  </div>
+  
+  <!-- MODALS FOR EACH LABEL -->
+  
+  <!-- Modal Template -->
+  <div class="modal fade" id="modalInnovative" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-white" style="background: linear-gradient(135deg, #3a3fdf, #1e1e2f); border-radius: 20px; border: 2px solid #7d8bff;">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="fas fa-lightbulb text-warning me-2"></i>Innovative Community</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Join a forward-thinking tech community filled with creative minds, fresh ideas, and endless innovation. Share, build, and grow together.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modalAccess" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-white" style="background: linear-gradient(135deg, #222831, #393E46); border-radius: 20px; border: 2px solid #00ADB5;">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="fas fa-bolt text-warning me-2"></i>Early Access</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Be the first to test new features and tools before the public. Your feedback shapes the future of our platforms.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modalClass" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-white" style="background: linear-gradient(135deg, #1f4037, #99f2c8); border-radius: 20px; border: 2px solid #ffffff33;">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="fas fa-chalkboard-teacher text-warning me-2"></i>Tech Class</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Learn from experts with real-world experience in programming, design, business, and innovation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modalAwards" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-white" style="background: linear-gradient(135deg, #8E2DE2, #4A00E0); border-radius: 20px; border: 2px solid #d1c4e9;">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="fas fa-award text-warning me-2"></i>Exclusive Awards</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Earn recognition and awards for your growth, contributions, and milestones within the TECH-NXT ecosystem.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modalTours" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-white" style="background: linear-gradient(135deg, #283048, #859398); border-radius: 20px; border: 2px solid #90a4ae;">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="fas fa-map-marked-alt text-warning me-2"></i>Tours</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Visit our centers, meet the team, and experience the journey of innovation firsthand through guided tours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modalMentorship" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-white" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); border-radius: 20px; border: 2px solid #6dd5ed;">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="fas fa-user-graduate text-warning me-2"></i>Mentorship</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Get matched with mentors who provide guidance, feedback, and support to accelerate your tech career.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modalBeta" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-white" style="background: linear-gradient(135deg, #000428, #004e92); border-radius: 20px; border: 2px solid #5bc0de;">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="fas fa-vial text-warning me-2"></i>Beta Features</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Test upcoming tools and contribute directly to development by reporting bugs and sharing your experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <footer class="footer mt-5 py-4 text-center">
+    <div class="container">
+      <p class="mb-1"><i class="fas fa-code-branch me-2"></i>Tech-Nxt Company</p>
+      <small class="footer-text">Empowering tech enthusiasts and innovators to connect, grow, and launch the future together.</small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("waitlist-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("success-message").classList.remove("d-none");
+      document.getElementById("email").value = "";
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+  
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+  
+    function createStars(count) {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 2,
+          speed: 0.5 + Math.random() * 1
+        });
+      }
+    }
+  
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "white";
+      for (let star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  
+    function updateStars() {
+      for (let star of stars) {
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      }
+    }
+  
+    function animate() {
+      drawStars();
+      updateStars();
+      requestAnimationFrame(animate);
+    }
+  
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createStars(150);
+    });
+  
+    resizeCanvas();
+    createStars(150);
+    animate();
+  </script>
+  
+  <script src="boostraps.js"></script>
+<script src="index.js"></script>
+<script src="server.js"></script>
+<script src="admin.js"></script>
+<script src="sever 2.js"></script>
+</body>
+</html>
+
+
+
+
 
