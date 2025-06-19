@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('index.js loaded');
   document.getElementById('waitlist-form').addEventListener('submit', async function (e) {
     e.preventDefault();
     const email = document.getElementById('email').value.trim();
+    console.log('Raw email value:', document.getElementById('email').value);
+    console.log('Email input value:', document.getElementById('email').value);
+    console.log('Input value after submit:', document.getElementById('email').value);
+    console.log(email)
 
     if (!email) {
       alert('Please enter an email');
